@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // List of protected routes
-const protectedRoutes = ["/home", "/posts", "/profile"];
+const protectedRoutes = ["/dashboard", "/dashboard/posts", "/dashboard/profile"];
+
 
 export function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
@@ -17,7 +18,7 @@ export function middleware(req: NextRequest) {
 
   if ((pathname === "/login" || pathname === "/register") && token) {
     const url = req.nextUrl.clone();
-    url.pathname = "/home";
+    url.pathname = "/dashboard";
     return NextResponse.redirect(url);
   }
 
@@ -28,7 +29,7 @@ export function middleware(req: NextRequest) {
 // Apply middleware only to these paths
 export const config = {
   matcher: [
-    "/home/:path*", 
+    "/dashboard/:path*", 
     "/posts/:path*", 
     "/profile/:path*", 
     "/login", 

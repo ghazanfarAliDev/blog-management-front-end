@@ -49,7 +49,7 @@ function LoginForm() {
             const userData = {...result, email: data.email}
             saveAuth(userData);
             toast.success("Logged in successfully 🎉");
-            router.push("/home");
+            router.push("/dashboard");
         } catch (error: any) {
             toast.error(error.message || "Login failed");
         }
