@@ -1,7 +1,12 @@
-"use-client"
+import RegisterForm from "./RegisterForm"
+
 function page() {
   return (
-    <div>Sign-up</div>
+    <>
+      <div className="min-h-screen flex items-center justify-center">
+        <RegisterForm />
+      </div>
+    </>
   )
 }
 
